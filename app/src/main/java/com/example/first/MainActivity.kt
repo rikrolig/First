@@ -57,7 +57,11 @@ fun DemoScreen(modifier: Modifier = Modifier) {
     }
 }
 
-// Здесь будет логика варианта
 fun processInput(input: String): String {
-    return "Заглушка. Введите число или символ."
+    val ch = input.trim().firstOrNull()
+        ?: return "Ошибка: введите символ"
+    if (ch !in 'A'..'Z') return "Ошибка: не латинская прописная буква"
+
+    return if (ch in "LMKD") "Это согласные буквы"
+    else "Возможно, это гласные буквы"
 }
